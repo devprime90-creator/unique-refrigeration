@@ -1,10 +1,10 @@
 export const COMPANY = {
   name: "Unique Refrigeration",
-  phone: "7505906143",
-  whatsapp: "917505906143",
+  phone: "9639687033",
+  whatsapp: "919639687033",
   address: "Izzat Nagar, Bareilly, UP",
   email: "support@uniquerefrigeration.com", // Aap apna email yahan daal sakte hain
-  whatsappLink: "https://wa.me/917505906143?text=Hi%20Unique%20Refrigeration,%20I%20need%20repair%20service%20in%20Bareilly.",
+  whatsappLink: "https://wa.me/919639687033?text=Hi%20Unique%20Refrigeration,%20I%20need%20repair%20service%20in%20Bareilly.",
 };
 
 // 1. BAREILLY_AREAS (Slug format for SEO URLs)
