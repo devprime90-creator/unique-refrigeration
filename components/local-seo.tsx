@@ -1,23 +1,23 @@
 "use client"
 import { motion } from "framer-motion"
-import { BAREILLY_AREAS, COMPANY } from "@/lib/constants"
+// getAreaName function ko import kiya readable text ke liye
+import { BAREILLY_AREAS, COMPANY, getAreaName } from "@/lib/constants"
 import { MapPin, Phone, Zap, Clock, ShieldCheck, Heart } from "lucide-react"
 
 export default function LocalSEO() {
   return (
     <section id="location" className="py-24 bg-[var(--background)] transition-colors duration-500 relative overflow-hidden">
       
-      {/* SaaS Decorative Glows - Indigo & Orange Mix */}
+      {/* Background Glows */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-600/10 blur-[120px] -z-10 rounded-full dark:bg-indigo-500/5" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-orange-600/10 blur-[120px] -z-10 rounded-full dark:bg-orange-500/5" />
 
       <div className="container mx-auto px-6">
-        {/* Main Glass Bento Container */}
-        <div className="relative overflow-hidden rounded-[3.5rem] border border-slate-200 dark:border-white/10 bg-slate-50/50 dark:bg-white/[0.02] p-8 md:p-16 shadow-2xl transition-all backdrop-blur-sm">
+        <div className="relative overflow-hidden rounded-[3.5rem] border border-slate-200 dark:border-white/10 bg-slate-50/50 dark:bg-white/[0.02] p-8 md:p-16 shadow-2xl backdrop-blur-sm">
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             
-            {/* Left Content: Text & Areas */}
+            {/* Left Content */}
             <div className="relative z-10">
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
@@ -37,12 +37,12 @@ export default function LocalSEO() {
                 <span className="font-['Hind'] text-xl block mb-2 font-bold text-slate-800 dark:text-slate-200">
                   हम बरेली के हर मोहल्ले में 30 मिनट के अंदर पहुंचते हैं।
                 </span>
-                Experience the premium quality repair at your doorstep with 100% genuine parts and on-site warranty.
+                Experience premium quality repair at your doorstep with 100% genuine parts and on-site warranty.
               </p>
 
-              {/* Area Tags - Indigo Chips */}
+              {/* Area Tags - Optimized with getAreaName */}
               <div className="flex flex-wrap gap-3 max-h-[300px] overflow-y-auto no-scrollbar pr-2 pt-2">
-                {BAREILLY_AREAS.map((area, idx) => (
+                {BAREILLY_AREAS.map((slug, idx) => (
                   <motion.div 
                     key={idx}
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -52,13 +52,14 @@ export default function LocalSEO() {
                     className="px-5 py-2.5 bg-white dark:bg-white/5 rounded-2xl text-[13px] font-bold text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-white/10 flex items-center gap-2 shadow-sm transition-all hover:border-indigo-500/30 group"
                   >
                     <MapPin size={14} className="text-indigo-600 dark:text-indigo-400 group-hover:animate-bounce" /> 
-                    <span className="font-['Hind']">{area}</span>
+                    {/* getAreaName slug ko readable banayega (e.g. civil-lines -> Civil Lines) */}
+                    <span className="font-['Hind']">{getAreaName(slug)}</span>
                   </motion.div>
                 ))}
               </div>
             </div>
 
-            {/* Right Card: Indigo & Orange Emergency Box */}
+            {/* Right Card */}
             <motion.div 
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -79,7 +80,7 @@ export default function LocalSEO() {
                 </h3>
                 
                 <p className="text-slate-500 dark:text-slate-400 mb-10 font-medium leading-relaxed italic">
-                   Hamari experts team 24/7 available hai urgent breakdown ke liye.
+                    Hamari experts team 24/7 available hai urgent breakdown ke liye.
                 </p>
                 
                 <div className="space-y-5">
