@@ -1,17 +1,10 @@
 export const COMPANY = {
   name: "Unique Refrigeration",
-<<<<<<< HEAD
-  phone: "9639687033",
-  whatsapp: "919639687033",
-  address: "Izzat Nagar, Bareilly, UP",
-  email: "support@uniquerefrigeration.com", // Aap apna email yahan daal sakte hain
-=======
   website: "https://uniquerefrigerationservice.com",
   phone: "9639687033",
   whatsapp: "919639687033",
   address: "Izzat Nagar, Bareilly, UP",
   email: "support@uniquerefrigeration.com",
->>>>>>> cd81db9 (style: final polished navbar with mobile menu fix and light borders)
   whatsappLink: "https://wa.me/919639687033?text=Hi%20Unique%20Refrigeration,%20I%20need%20repair%20service%20in%20Bareilly.",
 };
 
@@ -28,15 +21,15 @@ export const BAREILLY_AREAS = [
   "dd-puram",
   "suresh-sharma-nagar",
   "university-road",
-  "sun-city",           // Added
-  "kurmanchal-nagar",    // Added
-  "munshi-nagar",       // Added
-  "ashutosh-city",      // Added
-  "delapeer",           // Added
-  "green-park",         // Added
-  "ivri",               // Added
-  "dohra-mod",          // Added
-  "akanksha-enclave"    // Added
+  "sun-city",
+  "kurmanchal-nagar",
+  "munshi-nagar",
+  "ashutosh-city",
+  "delapeer",
+  "green-park",
+  "ivri",
+  "dohra-mod",
+  "akanksha-enclave"
 ];
 
 // 2. HELPER: Slug ko readable name mein convert karne ke liye (With Special Handling)
