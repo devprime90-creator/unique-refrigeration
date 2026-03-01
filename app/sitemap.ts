@@ -2,7 +2,8 @@ import { MetadataRoute } from 'next'
 import { BAREILLY_AREAS } from '@/lib/constants'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://uniquerefrigeration.com'
+  // Naya Domain yahan set kar diya hai
+  const baseUrl = 'https://uniquerefrigerationservice.com'
 
   // 1. Core Business Pages
   const mainPages = [
@@ -61,6 +62,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ]
 
   // 3. Local SEO Landing Pages (Area Specific)
+  // BAREILLY_AREAS se automatic pages generate honge
   const locationPages = BAREILLY_AREAS.map((slug) => ({
     url: `${baseUrl}/location/${slug}`,
     lastModified: new Date(),
@@ -68,6 +70,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }))
 
-  // Combining everything for a massive SEO impact
+  // Sabko combine karke return kar rahe hain
   return [...mainPages, ...servicePages, ...locationPages]
 }
