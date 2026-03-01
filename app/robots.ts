@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://uniquerefrigeration.com/sitemap.xml',
+    sitemap: 'https://uniquerefrigerationservice.com/sitemap.xml',
   }
 }

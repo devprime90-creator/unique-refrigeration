@@ -1,13 +1,21 @@
 export const COMPANY = {
   name: "Unique Refrigeration",
+<<<<<<< HEAD
   phone: "9639687033",
   whatsapp: "919639687033",
   address: "Izzat Nagar, Bareilly, UP",
   email: "support@uniquerefrigeration.com", // Aap apna email yahan daal sakte hain
+=======
+  website: "https://uniquerefrigerationservice.com",
+  phone: "9639687033",
+  whatsapp: "919639687033",
+  address: "Izzat Nagar, Bareilly, UP",
+  email: "support@uniquerefrigeration.com",
+>>>>>>> cd81db9 (style: final polished navbar with mobile menu fix and light borders)
   whatsappLink: "https://wa.me/919639687033?text=Hi%20Unique%20Refrigeration,%20I%20need%20repair%20service%20in%20Bareilly.",
 };
 
-// 1. BAREILLY_AREAS (Slug format for SEO URLs)
+// 1. UPDATED BAREILLY_AREAS (Whole Bareilly Coverage for Local SEO)
 export const BAREILLY_AREAS = [
   "izzat-nagar", 
   "civil-lines", 
@@ -19,19 +27,47 @@ export const BAREILLY_AREAS = [
   "model-town", 
   "dd-puram",
   "suresh-sharma-nagar",
-  "university-road"
+  "university-road",
+  "sun-city",           // Added
+  "kurmanchal-nagar",    // Added
+  "munshi-nagar",       // Added
+  "ashutosh-city",      // Added
+  "delapeer",           // Added
+  "green-park",         // Added
+  "ivri",               // Added
+  "dohra-mod",          // Added
+  "akanksha-enclave"    // Added
 ];
 
-// 2. HELPER: Slug ko readable name mein convert karne ke liye (Error Fixer)
+// 2. HELPER: Slug ko readable name mein convert karne ke liye (With Special Handling)
 export const getAreaName = (slug: string) => {
   if (!slug) return "Bareilly";
+  
+  // Short names and special casing
+  const mapping: Record<string, string> = {
+    "ivri": "IVRI",
+    "dd-puram": "DD Puram",
+  };
+
+  if (mapping[slug]) return mapping[slug];
+
   return slug
     .split('-')
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
 };
 
-// 3. ADVANCED SERVICES (With Icons & Prices for SaaS UI)
+// 3. SEO HELPER: Automatic Meta Title & Description generation
+export const getSEOData = (areaSlug: string, serviceTitle: string = "Repair Service") => {
+  const area = getAreaName(areaSlug);
+  return {
+    title: `${serviceTitle} in ${area}, Bareilly | Unique Refrigeration`,
+    description: `Best ${serviceTitle} in ${area}, Bareilly. Fast doorstep service, original parts, and 90-day warranty. Book expert technicians at ${COMPANY.phone}.`,
+    canonical: `${COMPANY.website}/area/${areaSlug}`
+  };
+};
+
+// 4. ADVANCED SERVICES
 export const SERVICES = [
   { 
     id: "ac",
@@ -63,7 +99,7 @@ export const SERVICES = [
   }
 ];
 
-// 4. SOCIAL LINKS (For Footer)
+// 5. SOCIAL LINKS
 export const SOCIAL_LINKS = {
   facebook: "https://facebook.com/uniquerefrigeration",
   instagram: "https://instagram.com/uniquerefrigeration",

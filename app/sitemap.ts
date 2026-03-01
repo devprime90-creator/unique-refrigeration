@@ -2,38 +2,65 @@ import { MetadataRoute } from 'next'
 import { BAREILLY_AREAS } from '@/lib/constants'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://uniquerefrigeration.com' // Domain confirmed
+  const baseUrl = 'https://uniquerefrigeration.com'
 
-  // 1. Static Pages (Main pages)
-  const staticPages = [
+  // 1. Core Business Pages
+  const mainPages = [
     {
-      url: baseUrl,
+      url: baseUrl, // Home
       lastModified: new Date(),
       changeFrequency: 'daily' as const,
-      priority: 1,
+      priority: 1.0,
     },
     {
-      url: `${baseUrl}/gallery`,
+      url: `${baseUrl}/gallery`, // Work Portfolio
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/clients`,
+      url: `${baseUrl}/clients`, // Trust & Reviews
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/contact`,
+      url: `${baseUrl}/contact`, // Lead Generation
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.9,
     },
+    {
+      url: `${baseUrl}/about`, // Brand Story
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    },
   ]
 
-  // 2. Dynamic Location Pages (SEO Boost for Bareilly Areas)
-  // Ye loop aapke constants se saare areas (like civil-lines) uthayega
+  // 2. High-Value Service Pages (Money Pages)
+  const servicePages = [
+    {
+      url: `${baseUrl}/services/ac-repair-bareilly`,
+      lastModified: new Date(),
+      changeFrequency: 'daily' as const,
+      priority: 0.95,
+    },
+    {
+      url: `${baseUrl}/services/fridge-repair-bareilly`,
+      lastModified: new Date(),
+      changeFrequency: 'daily' as const,
+      priority: 0.95,
+    },
+    {
+      url: `${baseUrl}/services/washing-machine-service`,
+      lastModified: new Date(),
+      changeFrequency: 'daily' as const,
+      priority: 0.95,
+    },
+  ]
+
+  // 3. Local SEO Landing Pages (Area Specific)
   const locationPages = BAREILLY_AREAS.map((slug) => ({
     url: `${baseUrl}/location/${slug}`,
     lastModified: new Date(),
@@ -41,5 +68,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }))
 
-  return [...staticPages, ...locationPages]
+  // Combining everything for a massive SEO impact
+  return [...mainPages, ...servicePages, ...locationPages]
 }

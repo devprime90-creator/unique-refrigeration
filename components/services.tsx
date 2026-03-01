@@ -1,183 +1,179 @@
 "use client"
+
 import { motion } from "framer-motion"
 import { COMPANY } from "@/lib/constants"
-import { 
-  Wind, Snowflake, Zap, ShieldCheck, Clock, Wrench, 
-  Droplets, ThermometerSnowflake, Settings, ArrowRight,
-  CheckCircle2, Star
-} from "lucide-react"
+import { Wind, Snowflake, Wrench, Droplets, CheckCircle2, ArrowRight, ShieldCheck, Zap, Laptop, Tv } from "lucide-react"
+import Image from "next/image"
 
-const quickServices = [
+const services = [
   { 
-    id: "ac-repair", 
-    title: "AC Repair", 
-    price: "Starts ₹299", 
+    title: "Split AC Repair", 
+    hindi: "एसी रिपेयर",
+    price: "₹299", 
     icon: Wind, 
+    img: "/images/ac-repair.png", // Main PNG
+    bg: "/images/gl-1.jpg",      // Gallery Background
     color: "from-blue-600 to-indigo-600",
-    msg: "I want to book AC Repair service in Bareilly",
-    hot: true
+    msg: "I need AC Repair service in Bareilly."
   },
   { 
-    id: "fridge", 
-    title: "Fridge Fix", 
-    price: "Starts ₹199", 
+    title: "Double Door Fridge", 
+    hindi: "फ्रिज मरम्मत",
+    price: "₹199", 
     icon: Snowflake, 
+    img: "/images/fridge-repair.png",
+    bg: "/images/gl-2.jpg",
     color: "from-cyan-500 to-blue-500",
-    msg: "I want to book Refrigerator Repair in Bareilly"
+    msg: "I need Fridge Repair service."
   },
   { 
-    id: "ac-service", 
-    title: "Deep Cleaning", 
-    price: "Starts ₹499", 
-    icon: Droplets, 
-    color: "from-blue-400 to-cyan-400",
-    msg: "I want to book AC Jet Pump Service"
-  },
-  { 
-    id: "gas", 
-    title: "Gas Filling", 
-    price: "Best Rates", 
-    icon: Zap, 
-    color: "from-amber-500 to-orange-500",
-    msg: "I need AC/Fridge Gas Filling service"
-  },
-  { 
-    id: "wm", 
-    title: "Washing Machine", 
-    price: "Starts ₹249", 
+    title: "Front Load WM", 
+    hindi: "वॉशिंग मशीन",
+    price: "₹249", 
     icon: Wrench, 
-    color: "from-emerald-500 to-teal-500",
-    msg: "I need Washing Machine Repair"
+    img: "/images/washing_machine.png",
+    bg: "/images/gl-3.jpg",
+    color: "from-emerald-500 to-teal-600",
+    msg: "Washing machine repair needed."
   },
   { 
-    id: "installation", 
+    title: "Deep Jet Cleaning", 
+    hindi: "एसी सर्विस",
+    price: "₹499", 
+    icon: Droplets, 
+    img: "/images/appliance.png", 
+    bg: "/images/gl-4.jpg",
+    color: "from-blue-400 to-cyan-400",
+    msg: "I want to book AC Jet Cleaning."
+  },
+  { 
+    title: "Gas Refilling", 
+    hindi: "गैस चार्जिंग",
+    price: "Best Rate", 
+    icon: Zap, 
+    img: "/images/ac-repair.png", 
+    bg: "/images/gl-5.jpg",
+    color: "from-orange-500 to-red-500",
+    msg: "I need AC/Fridge Gas refilling."
+  },
+  { 
     title: "Installation", 
-    price: "Starts ₹799", 
-    icon: Settings, 
-    color: "from-purple-500 to-indigo-500",
-    msg: "I need AC/Appliance Installation"
-  },
-  { 
-    id: "pcb", 
-    title: "PCB Repair", 
-    price: "Expert Fix", 
-    icon: ThermometerSnowflake, 
-    color: "from-rose-500 to-pink-500",
-    msg: "I need Inverter AC PCB Repair"
-  },
-  { 
-    id: "amc", 
-    title: "Yearly AMC", 
-    price: "Save 30%", 
-    icon: Star, 
-    color: "from-yellow-500 to-amber-600",
-    msg: "I want to know about Yearly Maintenance Contract"
+    hindi: "फिटिंग",
+    price: "₹799", 
+    icon: ShieldCheck, 
+    img: "/images/appliance.png", 
+    bg: "/images/gl-6.jpg",
+    color: "from-purple-500 to-pink-500",
+    msg: "I need new AC Installation."
   }
 ]
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 bg-[var(--background)] border-t border-slate-200 dark:border-white/5 transition-colors duration-500 relative overflow-hidden">
+    <section id="services" className="py-24 bg-[var(--background)] relative overflow-hidden transition-colors">
       
-      {/* Background Decorative Element */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 blur-[100px] rounded-full pointer-events-none" />
+      {/* Dynamic Background Glows */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/5 blur-[120px] rounded-full" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-600/5 blur-[120px] rounded-full" />
 
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 relative z-10">
         
-        {/* Header Section - Modern SaaS Style */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-          <div className="max-w-xl">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-600/10 text-blue-600 dark:text-blue-400 text-[10px] font-black uppercase tracking-widest mb-4"
-            >
-              <CheckCircle2 size={12} />
-              Verified Service in Bareilly
-            </motion.div>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight text-[var(--foreground)] leading-tight uppercase">
-              Professional <br />
-              <span className="text-blue-600">Home Services</span>
-            </h2>
-          </div>
-          
-          <div className="flex flex-wrap gap-3">
-            <div className="flex items-center gap-2 text-[11px] font-black bg-slate-100 dark:bg-white/5 px-4 py-2.5 rounded-2xl border border-slate-200 dark:border-white/10 text-[var(--foreground)] uppercase tracking-tighter">
-              <Clock size={16} className="text-orange-500" /> 30 Min Arrival
-            </div>
-            <div className="flex items-center gap-2 text-[11px] font-black bg-slate-100 dark:bg-white/5 px-4 py-2.5 rounded-2xl border border-slate-200 dark:border-white/10 text-[var(--foreground)] uppercase tracking-tighter">
-              <ShieldCheck size={16} className="text-emerald-500" /> 90 Days Warranty
-            </div>
-          </div>
+        {/* Header Section */}
+        <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
+          <motion.span 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="px-4 py-1.5 rounded-full bg-blue-600/10 text-blue-600 text-[10px] font-black uppercase tracking-[0.2em] border border-blue-600/20"
+          >
+            Verified by Unique Refrigeration
+          </motion.span>
+          <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-[var(--foreground)] uppercase leading-[0.9]">
+            Bareilly's <span className="text-blue-600 italic">Finest</span> <br /> Repair Squad
+          </h2>
+          <p className="text-slate-500 dark:text-slate-400 font-['Hind'] text-lg">
+             हम लाते हैं आपके पुराने अप्लायंसेज में नई जान। <span className="font-bold text-[var(--foreground)]">Fast. Affordable. Reliable.</span>
+          </p>
         </div>
 
-        {/* Services Grid - Bento Design */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {quickServices.map((item, idx) => (
+        {/* --- DYNAMIC MASONRY GRID --- */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((s, i) => (
             <motion.div
-              key={item.id}
-              initial={{ opacity: 0, y: 20 }}
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ y: -10 }}
-              transition={{ delay: idx * 0.05 }}
               viewport={{ once: true }}
-              className="group relative bg-white dark:bg-white/[0.03] p-6 rounded-[2.5rem] border border-slate-200 dark:border-white/10 shadow-sm hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300 flex flex-col justify-between"
+              transition={{ delay: i * 0.1 }}
+              className="group relative h-[450px] rounded-[3rem] overflow-hidden bg-slate-900 shadow-2xl"
             >
-              {/* Hot Tag */}
-              {item.hot && (
-                <div className="absolute top-6 right-6 px-3 py-1 bg-orange-500 text-white text-[9px] font-black rounded-full uppercase tracking-widest animate-pulse z-10">
-                  Best Seller
-                </div>
-              )}
+              {/* Layer 1: Actual Work Image (Background) */}
+              <Image 
+                src={s.bg} 
+                alt="Work background" 
+                fill 
+                className="object-cover opacity-40 group-hover:opacity-20 transition-all duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
 
-              <div>
-                <div className={`bg-gradient-to-br ${item.color} w-14 h-14 rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg shadow-blue-500/20 transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
-                  <item.icon size={28} />
+              {/* Layer 2: Transparent PNG (Floating) */}
+              <motion.div 
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute top-10 right-0 w-48 h-48 z-10 pointer-events-none group-hover:scale-110 transition-transform duration-500"
+              >
+                <img src={s.img} alt={s.title} className="w-full h-full object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.5)]" />
+              </motion.div>
+
+              {/* Layer 3: Content */}
+              <div className="absolute inset-0 p-10 flex flex-col justify-end z-20">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500 text-white shadow-lg shadow-emerald-500/30">
+                    <CheckCircle2 size={10} strokeWidth={4} />
+                    <span className="text-[8px] font-black uppercase tracking-widest">Verified</span>
+                  </div>
                 </div>
-                
-                <h3 className="font-black text-xl mb-1 text-[var(--foreground)] uppercase tracking-tight">
-                  {item.title}
+
+                <h3 className="text-3xl font-black text-white uppercase tracking-tighter leading-none mb-1">
+                  {s.title}
                 </h3>
-                <p className="text-blue-600 dark:text-blue-400 text-sm font-black mb-8">
-                  {item.price}
-                </p>
+                <p className="font-['Hind'] text-slate-300 text-lg mb-6">{s.hindi}</p>
+                
+                <div className="flex items-center justify-between">
+                  <span className="text-2xl font-black text-blue-400 tracking-tighter">{s.price}</span>
+                  <a 
+                    href={`https://wa.me/${COMPANY.whatsapp}?text=${encodeURIComponent(s.msg)}`}
+                    className="flex items-center justify-center w-14 h-14 bg-white text-black rounded-2xl hover:bg-blue-600 hover:text-white transition-all active:scale-90 shadow-xl"
+                  >
+                    <ArrowRight size={24} />
+                  </a>
+                </div>
               </div>
 
-              <a 
-                href={`https://wa.me/${COMPANY.whatsapp}?text=${encodeURIComponent(item.msg)}`}
-                className="w-full py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 group-hover:bg-blue-600 group-hover:text-white dark:group-hover:bg-blue-600 dark:group-hover:text-white transition-all rounded-2xl flex items-center justify-center text-xs font-black uppercase tracking-widest gap-2 shadow-lg active:scale-95"
-              >
-                Book Now
-                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-              </a>
-
-              {/* Decorative Overlay for Dark Mode */}
-              <div className="absolute inset-0 rounded-[2.5rem] bg-gradient-to-b from-transparent to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+              {/* Subtle Icon Glow */}
+              <div className="absolute -top-10 -left-10 opacity-10 group-hover:opacity-20 transition-opacity">
+                 <s.icon size={200} className="text-white" />
+              </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Bottom Feature Bar */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="mt-16 p-8 rounded-[3rem] bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 flex flex-wrap justify-center items-center gap-12"
-        >
-          <div className="flex flex-col items-center">
-            <span className="text-3xl font-black text-blue-600 tracking-tighter">5k+</span>
-            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Happy Customers</span>
+        {/* --- BOTTOM PROMISE BAR --- */}
+        <div className="mt-20 p-8 rounded-[3rem] bg-blue-600 flex flex-col md:flex-row justify-around items-center gap-8 text-white shadow-2xl shadow-blue-600/30">
+          <div className="text-center">
+            <h4 className="text-4xl font-black tracking-tighter">30 MINS</h4>
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-80">Arrival Time</p>
           </div>
-          <div className="h-10 w-[1px] bg-slate-300 dark:bg-white/10 hidden md:block" />
-          <div className="flex flex-col items-center">
-            <span className="text-3xl font-black text-blue-600 tracking-tighter">15+</span>
-            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Expert Technicians</span>
+          <div className="w-px h-12 bg-white/20 hidden md:block" />
+          <div className="text-center">
+            <h4 className="text-4xl font-black tracking-tighter">90 DAYS</h4>
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-80">Full Warranty</p>
           </div>
-          <div className="h-10 w-[1px] bg-slate-300 dark:bg-white/10 hidden md:block" />
-          <div className="flex flex-col items-center">
-            <span className="text-3xl font-black text-blue-600 tracking-tighter">100%</span>
-            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">Genuine Parts</span>
+          <div className="w-px h-12 bg-white/20 hidden md:block" />
+          <div className="text-center">
+            <h4 className="text-4xl font-black tracking-tighter">FIXED</h4>
+            <p className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-80">No Hidden Costs</p>
           </div>
-        </motion.div>
+        </div>
 
       </div>
     </section>

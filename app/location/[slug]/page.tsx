@@ -14,8 +14,42 @@ const LocationPage = () => {
   const slug = params?.slug as string
   const areaName = slug ? getAreaName(slug) : "Bareilly"
 
+  // SEO Schema Data (Google Search Console ke liye best hai)
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": `Unique Refrigeration - ${areaName}`,
+    "image": "https://uniquerefrigerationservice.com/logo.png", // Apna logo path check karlein
+    "telephone": COMPANY.phone,
+    "url": `https://uniquerefrigerationservice.com/location/${slug}`,
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": areaName,
+      "addressLocality": "Bareilly",
+      "addressRegion": "UP",
+      "postalCode": "243001",
+      "addressCountry": "IN"
+    },
+    "areaServed": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": "28.3670",
+        "longitude": "79.4304"
+      },
+      "geoRadius": "5000"
+    },
+    "description": `${areaName} Bareilly mein expert AC aur Fridge repair services. 30 min arrival aur 90 days warranty.`
+  };
+
   return (
     <main className="bg-[var(--background)] min-h-screen transition-colors duration-500">
+      {/* Google SEO Schema Injection */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       <Navbar />
 
       {/* --- SEO HERO SECTION --- */}
@@ -93,6 +127,7 @@ const LocationPage = () => {
             <h2 className="text-3xl font-black uppercase tracking-tight italic">Why we are #1 in {areaName}?</h2>
             <div className="grid gap-4">
               {[
+                `Doorstep Service in ${areaName} within 30 mins`,
                 "Verified Experts with 10+ years experience",
                 "No Hidden Charges - Fixed Price Quote",
                 "Original Spare Parts with Company Warranty",

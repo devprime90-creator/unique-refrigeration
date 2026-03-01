@@ -1,4 +1,5 @@
 "use client"
+
 import React from "react"
 import { motion } from "framer-motion"
 import { 
@@ -11,7 +12,7 @@ import { COMPANY } from "@/lib/constants"
 
 const ContactPage = () => {
   return (
-    <main className="bg-[var(--background)] min-h-screen transition-colors duration-500">
+    <main className="bg-[var(--background)] min-h-screen transition-colors duration-500 selection:bg-orange-500 selection:text-white">
       <Navbar />
       
       {/* --- HERO SECTION --- */}
@@ -39,7 +40,7 @@ const ContactPage = () => {
           </motion.h1>
 
           <p className="max-w-2xl mx-auto text-slate-500 dark:text-slate-400 font-['Hind'] text-xl font-bold leading-relaxed">
-            बरेली में कहीं भी, कभी भी। हमें कॉल करें या मैसेज भेजें, हमारी टीम 30 मिनट में आपके पास होगी।
+            Bareilly में कहीं भी, कभी भी। हमें कॉल करें या मैसेज भेजें, हमारी टीम 30 मिनट में आपके पास होगी।
           </p>
         </div>
       </section>
@@ -73,11 +74,11 @@ const ContactPage = () => {
                 { 
                   icon: MapPin, 
                   title: "Our Workshop", 
-                  val: "Izzat Nagar, Bareilly", 
+                  val: "Opposite Ghandhi Udhyan, Civil Lines, Bareilly", 
                   sub: "Visit for complex repairs",
                   color: "text-orange-600",
                   bg: "bg-orange-600/10",
-                  link: "#" 
+                  link: "https://maps.google.com/?q=Civil+Lines+Bareilly" 
                 },
                 { 
                   icon: Clock, 
@@ -95,14 +96,14 @@ const ContactPage = () => {
                   initial={{ opacity: 0, x: -30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ delay: idx * 0.1 }}
-                  className="flex items-center gap-6 p-8 rounded-[2.5rem] bg-white dark:bg-white/[0.02] border border-slate-200 dark:border-white/10 shadow-xl group transition-all"
+                  className="flex items-center gap-6 p-8 rounded-[2.5rem] bg-white dark:bg-white/[0.02] border border-slate-200 dark:border-white/10 shadow-xl group transition-all hover:border-orange-500/50"
                 >
                   <div className={`w-16 h-16 rounded-2xl ${item.bg} ${item.color} flex items-center justify-center group-hover:scale-110 transition-transform`}>
                     <item.icon size={28} />
                   </div>
-                  <div>
+                  <div className="flex-1">
                     <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">{item.title}</p>
-                    <h3 className="text-xl font-black text-[var(--foreground)] tracking-tight">{item.val}</h3>
+                    <h3 className="text-xl font-black text-[var(--foreground)] tracking-tight leading-tight">{item.val}</h3>
                     <p className="text-xs font-bold text-slate-500">{item.sub}</p>
                   </div>
                 </motion.a>
@@ -122,18 +123,19 @@ const ContactPage = () => {
 
                 <form className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
-                    <input type="text" placeholder="Your Name" className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-5 rounded-2xl outline-none focus:border-orange-500 transition-colors font-bold" />
-                    <input type="tel" placeholder="Phone Number" className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-5 rounded-2xl outline-none focus:border-orange-500 transition-colors font-bold" />
+                    <input type="text" placeholder="Your Name" className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-5 rounded-2xl outline-none focus:border-orange-500 transition-colors font-bold text-[var(--foreground)]" />
+                    <input type="tel" placeholder="Phone Number" className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-5 rounded-2xl outline-none focus:border-orange-500 transition-colors font-bold text-[var(--foreground)]" />
                   </div>
-                  <select className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-5 rounded-2xl outline-none focus:border-orange-500 transition-colors font-bold appearance-none">
-                     <option>AC Repair</option>
-                     <option>Fridge Fix</option>
-                     <option>Washing Machine</option>
+                  <select className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-5 rounded-2xl outline-none focus:border-orange-500 transition-colors font-bold appearance-none text-[var(--foreground)]">
+                     <option className="bg-[var(--background)]">AC Repair & Service</option>
+                     <option className="bg-[var(--background)]">Refrigerator Repair</option>
+                     <option className="bg-[var(--background)]">Washing Machine Fix</option>
+                     <option className="bg-[var(--background)]">Other Appliances</option>
                   </select>
-                  <textarea rows={4} placeholder="Your Message" className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-5 rounded-2xl outline-none focus:border-orange-500 transition-colors font-bold" />
+                  <textarea rows={4} placeholder="Describe the problem (e.g. Fridge not cooling)" className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 p-5 rounded-2xl outline-none focus:border-orange-500 transition-colors font-bold text-[var(--foreground)]" />
                   
-                  <button className="w-full py-6 bg-orange-600 text-white rounded-[2rem] font-black text-xl shadow-xl shadow-orange-600/30 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3">
-                    SUBMIT REQUEST <ArrowRight size={24} />
+                  <button type="button" className="w-full py-6 bg-orange-600 text-white rounded-[2rem] font-black text-xl shadow-xl shadow-orange-600/30 hover:shadow-orange-600/50 hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3">
+                    BOOK SERVICE NOW <ArrowRight size={24} />
                   </button>
                 </form>
               </div>
@@ -143,9 +145,9 @@ const ContactPage = () => {
         </div>
       </section>
 
-      <Footer />
+      
     </main>
   )
 }
 
-export default ContactPage; // Bhai, ye line sabse zaruri hai
+export default ContactPage;
