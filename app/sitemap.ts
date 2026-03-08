@@ -1,73 +1,32 @@
-import { MetadataRoute } from 'next'
-import { BAREILLY_AREAS } from '@/lib/constants'
+import { MetadataRoute } from "next"
+import { BAREILLY_AREAS } from "@/lib/constants"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://uniquerefrigeration.com'
+  const baseUrl = "https://uniquerefrigerationservice.com"
+  const lastModified = new Date()
 
-  // 1. Core Business Pages
-  const mainPages = [
-    {
-      url: baseUrl, // Home
-      lastModified: new Date(),
-      changeFrequency: 'daily' as const,
-      priority: 1.0,
-    },
-    {
-      url: `${baseUrl}/gallery`, // Work Portfolio
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/clients`, // Trust & Reviews
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/contact`, // Lead Generation
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/about`, // Brand Story
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    },
+  const mainPages: MetadataRoute.Sitemap = [
+    { url: `${baseUrl}`, lastModified, changeFrequency: "daily", priority: 1 },
+    { url: `${baseUrl}/gallery`, lastModified, changeFrequency: "weekly", priority: 0.7 },
+    { url: `${baseUrl}/clients`, lastModified, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${baseUrl}/contact`, lastModified, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${baseUrl}/about`, lastModified, changeFrequency: "monthly", priority: 0.6 },
   ]
 
-  // 2. High-Value Service Pages (Money Pages)
-  const servicePages = [
-    {
-      url: `${baseUrl}/services/ac-repair-bareilly`,
-      lastModified: new Date(),
-      changeFrequency: 'daily' as const,
-      priority: 0.95,
-    },
-    {
-      url: `${baseUrl}/services/fridge-repair-bareilly`,
-      lastModified: new Date(),
-      changeFrequency: 'daily' as const,
-      priority: 0.95,
-    },
-    {
-      url: `${baseUrl}/services/washing-machine-service`,
-      lastModified: new Date(),
-      changeFrequency: 'daily' as const,
-      priority: 0.95,
-    },
+  const servicePages: MetadataRoute.Sitemap = [
+    { url: `${baseUrl}/services/ac-service-bareilly`, lastModified, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${baseUrl}/services/ac-repair-bareilly`, lastModified, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${baseUrl}/services/fridge-repair-bareilly`, lastModified, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${baseUrl}/services/washing-machine-repair`, lastModified, changeFrequency: "weekly", priority: 0.8 },
   ]
 
-  // 3. Local SEO Landing Pages (Area Specific)
-  const locationPages = BAREILLY_AREAS.map((slug) => ({
-    url: `${baseUrl}/location/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
+  // YE RAHA LOCATION SLUG LOGIC
+  const locationPages: MetadataRoute.Sitemap = BAREILLY_AREAS.map((area) => ({
+    url: `${baseUrl}/location/${area}`, // Agar folder 'area' hai toh yahan 'area' kar dena
+    lastModified,
+    changeFrequency: "weekly",
     priority: 0.8,
   }))
 
-  // Combining everything for a massive SEO impact
   return [...mainPages, ...servicePages, ...locationPages]
 }

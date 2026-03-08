@@ -1,161 +1,54 @@
-"use client"
+import LocationClient from "./LocationClient";
+import { getAreaName } from "@/lib/constants";
+import type { Metadata } from "next";
 
-import React from "react"
-import { useParams } from "next/navigation"
-import { motion } from "framer-motion"
-import { MapPin, Phone, ShieldCheck, Clock, CheckCircle2, Star, Zap } from "lucide-react"
-import Navbar from "@/components/navbar"
-import Footer from "@/components/footer"
-import { COMPANY, getAreaName } from "@/lib/constants"
-import Link from "next/link"
+type Props = {
+  params: { slug: string };
+};
 
-const LocationPage = () => {
-  const params = useParams()
-  const slug = params?.slug as string
-  const areaName = slug ? getAreaName(slug) : "Bareilly"
+// SEO UPDATE: Location wise AC Service & Repair keywords
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const areaName = getAreaName(params.slug);
 
-  // SEO Schema Data (Google Search Console ke liye best hai)
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": `Unique Refrigeration - ${areaName}`,
-    "image": "https://uniquerefrigerationservice.com/logo.png", // Apna logo path check karlein
-    "telephone": COMPANY.phone,
-    "url": `https://uniquerefrigerationservice.com/location/${slug}`,
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": areaName,
-      "addressLocality": "Bareilly",
-      "addressRegion": "UP",
-      "postalCode": "243001",
-      "addressCountry": "IN"
+  // Keywords ko variable mein rakh lete hain taaki clean dikhe
+  const titleStr = `Best AC Service in ${areaName} | AC Repair & Gas Filling`;
+  const descStr = `Get professional AC Service in ${areaName}, Bareilly. Unique Refrigeration offers deep jet cleaning, gas charging, and expert AC repair in ${areaName} within 60 mins. 90-day warranty guaranteed!`;
+
+  return {
+    title: titleStr,
+    description: descStr,
+    alternates: {
+      canonical: `https://uniquerefrigerationservice.com/location/${params.slug}`,
     },
-    "areaServed": {
-      "@type": "GeoCircle",
-      "geoMidpoint": {
-        "@type": "GeoCoordinates",
-        "latitude": "28.3670",
-        "longitude": "79.4304"
-      },
-      "geoRadius": "5000"
+    // Search Engines (Google) ke liye keywords hints
+    keywords: [
+      `AC Service in ${areaName}`,
+      `AC Repair ${areaName}`,
+      `Air Conditioner service Bareilly`,
+      `AC gas filling in ${areaName}`,
+      `Best AC mechanic ${areaName}`
+    ],
+    openGraph: {
+      title: `Expert AC Service in ${areaName}, Bareilly`,
+      description: `Doorstep AC repair and service in ${areaName} by Unique Refrigeration.`,
+      url: `https://uniquerefrigerationservice.com/location/${params.slug}`,
+      images: [
+        {
+          url: '/images/ac-service-og.jpg', // Agar image hai toh uska path
+          width: 1200,
+          height: 630,
+          alt: `AC Service in ${areaName}`,
+        },
+      ],
     },
-    "description": `${areaName} Bareilly mein expert AC aur Fridge repair services. 30 min arrival aur 90 days warranty.`
+    twitter: {
+      card: "summary_large_image",
+      title: titleStr,
+      description: descStr,
+    }
   };
-
-  return (
-    <main className="bg-[var(--background)] min-h-screen transition-colors duration-500">
-      {/* Google SEO Schema Injection */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-
-      <Navbar />
-
-      {/* --- SEO HERO SECTION --- */}
-      <section className="pt-44 pb-20 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-600/5 blur-[120px] rounded-full -z-10" />
-        
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-500/10 text-orange-600 dark:text-orange-400 text-[10px] font-black uppercase tracking-widest mb-8 border border-orange-500/20 shadow-sm"
-            >
-              <MapPin size={12} className="animate-bounce" />
-              Best Repair Service in {areaName}, Bareilly
-            </motion.div>
-
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-5xl md:text-8xl font-black text-[var(--foreground)] tracking-tighter uppercase leading-[0.85] mb-10"
-            >
-              Expert Repair <br />
-              In <span className="text-indigo-600 italic">{areaName}</span>
-            </motion.h1>
-
-            <p className="text-slate-500 dark:text-slate-400 font-['Hind'] text-xl font-bold leading-relaxed max-w-2xl mb-12">
-              क्या आप {areaName} में AC या फ्रिज रिपेयर ढूंढ रहे हैं? Unique Refrigeration की टीम आपके घर सिर्फ 30 मिनट में पहुंचेगी। 
-              100% ओरिजिनल पार्ट्स और पक्के बिल के साथ।
-            </p>
-
-            <div className="flex flex-wrap gap-4">
-               <a href={`tel:${COMPANY.phone}`} className="px-10 py-5 bg-indigo-600 text-white rounded-[2rem] font-black text-lg shadow-xl shadow-indigo-600/20 hover:scale-105 transition-all">
-                  CALL {COMPANY.phone}
-               </a>
-               <Link href="/contact" className="px-10 py-5 bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-[var(--foreground)] rounded-[2rem] font-black text-lg hover:bg-slate-50 transition-all">
-                  BOOK ONLINE
-               </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* --- BENEFITS SECTION --- */}
-      <section className="py-24 bg-slate-50 dark:bg-white/[0.02]">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { icon: Clock, title: "30 Min Response", desc: `Technicians are always active near ${areaName} for fast arrival.` },
-              { icon: ShieldCheck, title: "Local Warranty", desc: `On-site warranty valid across all homes in ${areaName}.` },
-              { icon: Zap, title: "Emergency Fix", desc: "Available 24/7 for urgent breakdowns in your area." }
-            ].map((item, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                className="p-10 rounded-[3rem] bg-white dark:bg-slate-900 border border-slate-200 dark:border-white/10 shadow-sm hover:shadow-xl transition-all"
-              >
-                <div className="w-14 h-14 rounded-2xl bg-indigo-600/10 text-indigo-600 flex items-center justify-center mb-6">
-                  <item.icon size={28} />
-                </div>
-                <h3 className="text-xl font-black mb-3 uppercase tracking-tighter">{item.title}</h3>
-                <p className="text-slate-500 dark:text-slate-400 text-sm font-medium leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* --- SEO CONTENT --- */}
-      <section className="py-24">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto space-y-12 text-center md:text-left">
-            <h2 className="text-3xl font-black uppercase tracking-tight italic">Why we are #1 in {areaName}?</h2>
-            <div className="grid gap-4">
-              {[
-                `Doorstep Service in ${areaName} within 30 mins`,
-                "Verified Experts with 10+ years experience",
-                "No Hidden Charges - Fixed Price Quote",
-                "Original Spare Parts with Company Warranty",
-                "Expertise in Samsung, LG, Daikin, Voltas & more"
-              ].map((text, i) => (
-                <div key={i} className="flex items-center gap-4 p-5 rounded-3xl bg-white dark:bg-white/5 border border-slate-100 dark:border-white/5 font-bold text-sm">
-                  <CheckCircle2 className="text-green-500 flex-shrink-0" size={20} />
-                  {text}
-                </div>
-              ))}
-            </div>
-
-            <div className="p-12 rounded-[4rem] bg-indigo-600 text-white relative overflow-hidden text-center shadow-2xl shadow-indigo-600/30">
-              <Star className="mx-auto mb-6 text-orange-400 fill-orange-400" size={48} />
-              <h2 className="text-4xl font-black uppercase mb-6 italic tracking-tighter">
-                Need AC Repair <br /> in {areaName} Today?
-              </h2>
-              <a href={`tel:${COMPANY.phone}`} className="inline-block px-12 py-6 bg-white text-indigo-600 rounded-full font-black text-xl hover:scale-105 transition-all">
-                 CALL NOW: {COMPANY.phone}
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <Footer />
-    </main>
-  )
 }
 
-export default LocationPage
+export default function Page({ params }: Props) {
+  return <LocationClient />;
+}
