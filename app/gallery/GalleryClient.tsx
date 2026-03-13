@@ -2,8 +2,7 @@
 import { motion } from "framer-motion"
 import { ExternalLink, MapPin, Sparkles, MoveUpRight, Zap } from "lucide-react"
 import Link from "next/link"
-import Navbar from "@/components/navbar"
-import Footer from "@/components/footer"
+
 
 const images = [
   { id: 1, src: "/images/gl-1.jpg", title: "AC Master Service", area: "Civil Lines", size: "lg" },
@@ -21,7 +20,7 @@ const images = [
 export default function GalleryPage() {
   return (
     <main className="bg-[var(--background)] min-h-screen transition-colors duration-500 overflow-x-hidden">
-      <Navbar />
+    
       
       {/* --- MINIMALIST FLOATING HEADER --- */}
       <section className="pt-40 pb-16 relative">

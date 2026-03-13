@@ -6,14 +6,13 @@ import {
   Phone, Mail, MapPin, MessageSquare, 
   Clock, Send, ArrowRight, Sparkles 
 } from "lucide-react"
-import Navbar from "@/components/navbar"
-import Footer from "@/components/footer"
+
 import { COMPANY } from "@/lib/constants"
 
 const ContactPage = () => {
   return (
     <main className="bg-[var(--background)] min-h-screen transition-colors duration-500 selection:bg-orange-500 selection:text-white">
-      <Navbar />
+    
       
       {/* --- HERO SECTION --- */}
       <section className="pt-44 pb-20 relative overflow-hidden">

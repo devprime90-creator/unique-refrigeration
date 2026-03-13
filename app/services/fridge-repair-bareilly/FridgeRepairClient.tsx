@@ -1,8 +1,6 @@
 "use client"
 import { motion } from "framer-motion"
 import { COMPANY } from "@/lib/constants"
-import Navbar from "@/components/navbar"
-import Footer from "@/components/footer"
 import { Snowflake, Zap, PhoneCall, ShieldCheck, CheckCircle2, Star, Gauge, MousePointer2 } from "lucide-react"
 import Image from "next/image"
 
@@ -16,7 +14,7 @@ export default function FridgeRepairClient() { // Name changed
 
   return (
     <main className="bg-[var(--background)] min-h-screen transition-colors duration-500 selection:bg-cyan-500 selection:text-white">
-      <Navbar />
+     
       
       {/* --- HERO SECTION --- */}
       <section className="pt-32 pb-20 relative overflow-hidden">

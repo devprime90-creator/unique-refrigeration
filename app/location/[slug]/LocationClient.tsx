@@ -4,8 +4,6 @@ import React from "react"
 import { useParams } from "next/navigation"
 import { motion } from "framer-motion"
 import { MapPin, Phone, ShieldCheck, Clock, CheckCircle2, Star, Zap } from "lucide-react"
-import Navbar from "@/components/navbar"
-import Footer from "@/components/footer"
 import { COMPANY, getAreaName } from "@/lib/constants"
 import Link from "next/link"
 
@@ -49,8 +47,6 @@ const LocationPage = () => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-
-      <Navbar />
 
       {/* --- SEO HERO SECTION --- */}
 <section className="pt-44 pb-20 relative overflow-hidden">

@@ -1,12 +1,12 @@
 "use client"
 import { motion } from "framer-motion"
 import { COMPANY } from "@/lib/constants"
-import Navbar from "@/components/navbar"
-import Footer from "@/components/footer"
 import { Award, Users, History, ShieldCheck, Heart, Zap, Star, MapPin } from "lucide-react"
 import Image from "next/image"
 
-export default function AboutClient() { // Name changed to AboutClient
+// ✅ Navbar aur Footer HATA diye — layout.tsx me already hain
+
+export default function AboutClient() {
   const stats = [
     { label: "Years Experience", value: "14+", icon: History },
     { label: "Happy Clients", value: "10k+", icon: Users },
@@ -15,8 +15,7 @@ export default function AboutClient() { // Name changed to AboutClient
   ]
 
   return (
-    <main className="bg-[var(--background)] min-h-screen transition-colors duration-500">
-      <Navbar />
+    <div className="bg-[var(--background)] min-h-screen transition-colors duration-500">
 
       {/* --- HERO SECTION --- */}
       <section className="pt-32 pb-20 relative overflow-hidden">
@@ -35,8 +34,11 @@ export default function AboutClient() { // Name changed to AboutClient
           </h1>
           
           <p className="max-w-3xl mx-auto text-slate-500 dark:text-slate-400 font-['Hind'] text-xl md:text-2xl leading-relaxed">
-            Unique Refrigeration 2010 se <span className="text-blue-600 font-bold">Bareilly के सबसे भरोसेमंद AC और Fridge Repair Expert</span> के रूप में पहचाना जाता है। 
-            <span className="text-[var(--foreground)] font-bold"> 14 सालों का अनुभव </span> ही हमारी सबसे बड़ी ताकत है।
+            Unique Refrigeration 2010 se{" "}
+            <span className="text-blue-600 font-bold">Bareilly के सबसे भरोसेमंद AC और Fridge Repair Expert</span>{" "}
+            के रूप में पहचाना जाता है।{" "}
+            <span className="text-[var(--foreground)] font-bold"> 14 सालों का अनुभव </span>{" "}
+            ही हमारी सबसे बड़ी ताकत है।
           </p>
         </div>
       </section>
@@ -77,10 +79,12 @@ export default function AboutClient() { // Name changed to AboutClient
             </h2>
             <div className="space-y-6 font-['Hind'] text-lg text-slate-300">
               <p>
-                हमने 2010 में एक छोटे से विजन के साथ शुरुआत की थी: <span className="text-white font-bold">"Bareilly के हर घर को बेहतरीन और ईमानदार रिपेयरिंग सर्विस देना।"</span>
+                हमने 2010 में एक छोटे से विजन के साथ शुरुआत की थी:{" "}
+                <span className="text-white font-bold">"Bareilly के हर घर को बेहतरीन और ईमानदार रिपेयरिंग सर्विस देना।"</span>
               </p>
               <p>
-                आज 14 साल बाद, Unique Refrigeration सिर्फ एक नाम नहीं, बल्कि <span className="text-blue-400 font-bold">Expert AC & Fridge Repair</span> का दूसरा नाम है। हमने Civil Lines से लेकर DD Puram तक हज़ारों घरों में अपनी सेवाएं दी हैं।
+                आज 14 साल बाद, Unique Refrigeration सिर्फ एक नाम नहीं, बल्कि{" "}
+                <span className="text-blue-400 font-bold">Expert AC & Fridge Repair</span> का दूसरा नाम है।
               </p>
             </div>
             <div className="flex gap-6">
@@ -109,23 +113,23 @@ export default function AboutClient() { // Name changed to AboutClient
         </div>
         <div className="container mx-auto px-6 grid md:grid-cols-3 gap-12">
           <div className="space-y-4">
-             <div className="w-16 h-16 rounded-3xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center"><ShieldCheck size={32}/></div>
-             <h3 className="text-2xl font-black uppercase italic tracking-tighter text-[var(--foreground)]">Honest Pricing</h3>
-             <p className="font-['Hind'] text-slate-500 dark:text-slate-400">हमारा रेट कार्ड फिक्स है। Bareilly में सबसे वाजिब दाम पर बेहतरीन सर्विस।</p>
+            <div className="w-16 h-16 rounded-3xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center"><ShieldCheck size={32}/></div>
+            <h3 className="text-2xl font-black uppercase italic tracking-tighter text-[var(--foreground)]">Honest Pricing</h3>
+            <p className="font-['Hind'] text-slate-500 dark:text-slate-400">हमारा रेट कार्ड फिक्स है। Bareilly में सबसे वाजिब दाम पर बेहतरीन सर्विस।</p>
           </div>
           <div className="space-y-4">
-             <div className="w-16 h-16 rounded-3xl bg-blue-500/10 text-blue-500 flex items-center justify-center"><Zap size={32}/></div>
-             <h3 className="text-2xl font-black uppercase italic tracking-tighter text-[var(--foreground)]">Super Fast Response</h3>
-             <p className="font-['Hind'] text-slate-500 dark:text-slate-400">Bareilly में कहीं भी हों, हमारी टीम 30-60 मिनट में आपके दरवाजे पर होगी।</p>
+            <div className="w-16 h-16 rounded-3xl bg-blue-500/10 text-blue-500 flex items-center justify-center"><Zap size={32}/></div>
+            <h3 className="text-2xl font-black uppercase italic tracking-tighter text-[var(--foreground)]">Super Fast Response</h3>
+            <p className="font-['Hind'] text-slate-500 dark:text-slate-400">Bareilly में कहीं भी हों, हमारी टीम 30-60 मिनट में आपके दरवाजे पर होगी।</p>
           </div>
           <div className="space-y-4">
-             <div className="w-16 h-16 rounded-3xl bg-pink-500/10 text-pink-500 flex items-center justify-center"><Heart size={32}/></div>
-             <h3 className="text-2xl font-black uppercase italic tracking-tighter text-[var(--foreground)]">90-Day Warranty</h3>
-             <p className="font-['Hind'] text-slate-500 dark:text-slate-400">Unique Refrigeration मतलब पूरी निश्चिंतता। 90 दिनों की सर्विस वारंटी के साथ।</p>
+            <div className="w-16 h-16 rounded-3xl bg-pink-500/10 text-pink-500 flex items-center justify-center"><Heart size={32}/></div>
+            <h3 className="text-2xl font-black uppercase italic tracking-tighter text-[var(--foreground)]">90-Day Warranty</h3>
+            <p className="font-['Hind'] text-slate-500 dark:text-slate-400">Unique Refrigeration मतलब पूरी निश्चिंतता। 90 दिनों की सर्विस वारंटी के साथ।</p>
           </div>
         </div>
       </section>
 
-    </main>
+    </div>
   )
 }

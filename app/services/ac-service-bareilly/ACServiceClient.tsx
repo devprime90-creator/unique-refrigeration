@@ -1,8 +1,6 @@
 "use client"
 import { motion } from "framer-motion"
 import { COMPANY } from "@/lib/constants"
-import Navbar from "@/components/navbar"
-import Footer from "@/components/footer"
 import { Snowflake, Wind, ShieldCheck, CheckCircle2, PhoneCall, Star, Tag } from "lucide-react"
 import Image from "next/image"
 
@@ -18,7 +16,7 @@ export default function ACServiceClient() { // Name update
 
   return (
     <main className="bg-[var(--background)] min-h-screen">
-      <Navbar />
+      
 
       {/* HERO SECTION */}
       <section className="pt-32 pb-20 relative overflow-hidden">

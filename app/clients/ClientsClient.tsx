@@ -2,8 +2,7 @@
 import { motion } from "framer-motion"
 import { Users, Building2, ShieldCheck, Heart, Star, ArrowUpRight } from "lucide-react"
 import Link from "next/link"
-import Navbar from "@/components/navbar"
-import Footer from "@/components/footer"
+
 
 const clients = [
   { name: "Sagar Ratna", type: "Restaurant", area: "Civil Lines" },
@@ -17,7 +16,7 @@ const clients = [
 export default function ClientsPage() {
   return (
     <main className="bg-[var(--background)] min-h-screen transition-colors duration-500">
-      <Navbar />
+     
       
       {/* --- HERO SECTION --- */}
       <section className="pt-44 pb-20 relative overflow-hidden">
