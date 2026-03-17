@@ -5,8 +5,15 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: '/private/',
+      // In folders ko crawl karne ki zarurat nahi hoti
+      disallow: [
+        '/private/',
+        '/api/',      // Agar aapne koi API routes banaye hain
+        '/_next/',     // Next.js internal files
+        '/admin/',    // Agar koi admin panel hai
+      ],
     },
     sitemap: 'https://uniquerefrigerationservice.com/sitemap.xml',
+    host: 'https://uniquerefrigerationservice.com', // Google ko main domain batane ke liye
   }
 }
